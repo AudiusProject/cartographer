@@ -21,7 +21,7 @@ npm run pull:staging
 
 # Run Cartographer
 #  count: maximum number of each tracks, collections, and users fetch
-npm run start:staging -- --count=100
+npm run start:staging -- --count=1000
 
 # Sync your changes to staging
 npm run sync:staging
@@ -45,7 +45,7 @@ npm run reset
 
 ## CI
 
-The sitemap generator runs in circleci every hour with --count=100
+The sitemap generator runs in circleci every hour with --count=1000
 
 That config can be found in ./circleci/config.yml
 

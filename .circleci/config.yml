@@ -38,7 +38,7 @@ jobs:
           paths:
             - node_modules
 
-  # Updates the staging sitemaps (max updates 100 for tracks, users, collections)
+  # Updates the staging sitemaps (max updates 1000 for tracks, users, collections)
   run-staging:
     executor: aws-cli/default
     working_directory: ~/cartographer
@@ -54,12 +54,12 @@ jobs:
           command: npm run pull:staging
       - run:
           name: run
-          command: npm run start:staging -- --count=100
+          command: npm run start:staging -- --count=1000
       - run:
           name: sync
           command: npm run sync:staging
 
-  # Updates the production sitemaps (max updates 100 for tracks, users, collections)
+  # Updates the production sitemaps (max updates 1000 for tracks, users, collections)
   run-production:
     executor: aws-cli/default
     working_directory: ~/cartographer
@@ -79,7 +79,7 @@ jobs:
           command: npm run pull:production
       - run:
           name: run
-          command: npm run start:production -- --count=100
+          command: npm run start:production -- --count=1000
       - run:
           name: sync
           command: npm run sync:production

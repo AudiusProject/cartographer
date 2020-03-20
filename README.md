@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/2731362/64272626-9c3b8800-cef4-11e9-973e-0e38a666ec46.png" alt="stems" width="340">
+  <img src="https://user-images.githubusercontent.com/2731362/77206274-caa93b00-6ab3-11ea-917f-1dd18da6a4b4.png" alt="stems" width="340">
 
   <p align="center">
     <a href="https://audius.co/sitemaps/index.xml">audius.co</a> sitemap generator

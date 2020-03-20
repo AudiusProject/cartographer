@@ -1,13 +1,17 @@
 version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@0.1.22
 
 jobs:
   # Updates the staging sitemaps (max updates 100 for tracks, users, collections)
   run-staging:
+    executor: aws-cli/default
     working_directory: ~/cartographer
     docker:
       - image: circleci/node:10.13
     steps:
       - checkout
+      - aws-cli/setup
       - run:
           name: pull
           command: npm run pull:staging
@@ -20,11 +24,13 @@ jobs:
 
   # Updates the production sitemaps (max updates 100 for tracks, users, collections)
   run-production:
+    executor: aws-cli/default
     working_directory: ~/cartographer
     docker:
       - image: circleci/node:10.13
     steps:
       - checkout
+      - aws-cli/setup
       - run:
           name: pull
           command: npm run pull:production

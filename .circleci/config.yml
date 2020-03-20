@@ -1,0 +1,112 @@
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@0.1.22
+
+jobs:
+  init:
+    working_directory: ~/cartographer
+    docker:
+      - image: circleci/node:10.13
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - dependency-cache-
+
+      - run: npm install
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+      # Lint
+      - run:
+          name: lint
+          command: npm run lint
+
+      # Persist workspace
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
+
+  # Updates the staging sitemaps (max updates 1000 for tracks, users, collections)
+  run-staging:
+    executor: aws-cli/default
+    working_directory: ~/cartographer
+    docker:
+      - image: circleci/node:10.13
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - aws-cli/setup
+      - run:
+          name: pull
+          command: npm run pull:staging
+      - run:
+          name: run
+          command: npm run start:staging -- --count=1000
+      - run:
+          name: sync
+          command: npm run sync:staging
+
+  # Updates the production sitemaps (max updates 1000 for tracks, users, collections)
+  run-production:
+    executor: aws-cli/default
+    working_directory: ~/cartographer
+    docker:
+      - image: circleci/node:10.13
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - aws-cli/setup
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - run: npm install
+      - run:
+          name: pull
+          command: npm run pull:production
+      - run:
+          name: run
+          command: npm run start:production -- --count=1000
+      - run:
+          name: sync
+          command: npm run sync:production
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - init
+      - run-staging:
+          requires:
+            - init
+  hourly:
+    triggers:
+      - schedule:
+          # 40 minutes into every hour
+          cron: "40 * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - init
+      - run-staging:
+          requires:
+            - init
+      # TODO: Re-enable this
+      # - run-production:
+      #   requires:
+      #     - init

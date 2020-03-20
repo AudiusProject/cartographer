@@ -1,0 +1,55 @@
+version: 2.1
+
+jobs:
+  # Updates the staging sitemaps (max updates 100 for tracks, users, collections)
+  run-staging:
+    working_directory: ~/cartographer
+    docker:
+      - image: circleci/node:10.13
+    steps:
+      - checkout
+      - run:
+          name: pull
+          command: npm run pull:staging
+      - run:
+          name: run
+          command: npm run start:staging -- --count=100
+      - run:
+          name: sync
+          command: npm run sync:staging
+
+  # Updates the production sitemaps (max updates 100 for tracks, users, collections)
+  run-production:
+    working_directory: ~/cartographer
+    docker:
+      - image: circleci/node:10.13
+    steps:
+      - checkout
+      - run:
+          name: pull
+          command: npm run pull:production
+      - run:
+          name: run
+          command: npm run start:production -- --count=100
+      - run:
+          name: sync
+          command: npm run sync:production
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - run-staging
+  hourly:
+    triggers:
+      - schedule:
+          # 40 minutes into every hour
+          cron: "40 * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - run-staging
+      # TODO: Re-enable this
+      # - run-production

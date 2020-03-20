@@ -4,7 +4,15 @@
   "description": "Audius site-map generator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:staging": "env-cmd -f .env.staging node index.js",
+    "start:production": "env-cmd -f .env.prod node index.js",
+    "reset": "rm -rf sitemaps",
+    "lint": "npx standard",
+    "lint-fix": "npx standard --fix",
+    "pull:staging": "aws s3 sync s3://staging.audius.co/sitemaps ./sitemaps --delete",
+    "pull:production": "aws s3 sync s3://audius.co/sitemaps ./sitemaps --delete",
+    "sync:staging": "aws s3 sync sitemaps s3://staging.audius.co/sitemaps --delete --cache-control max-age=0",
+    "sync:production": "aws s3 sync sitemaps s3://audius.co/sitemaps --delete --cache-control max-age=0"
   },
   "repository": {
     "type": "git",
@@ -15,5 +23,18 @@
   "bugs": {
     "url": "https://github.com/AudiusProject/cartographer/issues"
   },
-  "homepage": "https://github.com/AudiusProject/cartographer#readme"
+  "homepage": "https://github.com/AudiusProject/cartographer#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "js-yaml": "^3.13.1",
+    "xmlbuilder2": "^1.7.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "pre-commit": "^1.2.2",
+    "standard": "^14.3.3"
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }

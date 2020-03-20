@@ -88,7 +88,7 @@ const run = async () => {
     // Create a master site index if needed
     createRootSiteIndex(INDEX, TRACKS_INDEX, COLLECTIONS_INDEX, USERS_INDEX)
 
-    // Read from the latest.yaml config to determine where to start indexing
+    // Read from the latest.yml config to determine where to start indexing
     const { latestTrack, latestCollection, latestUser } = readLatest()
 
     // Fetch tracks, collections, and users for processing

@@ -12,7 +12,7 @@
 
 The Cartographer sitemap generator is a node script that runs and is stateful on the presence of a local `/sitemaps` directory.
 
-Given the existence of sitemaps in the `/sitemaps` directory and the `/sitemaps` latest.yaml config, Cartographer will crawl an Audius discovery provider, indexing new entries into the `/sitemaps` folder, which can then be persisted and served.
+Given the existence of sitemaps in the `sitemaps/` directory and the `sitemaps/latest.yml` config, Cartographer will crawl an Audius discovery provider, indexing new entries into the `/sitemaps` folder, which can then be persisted and served.
 
 Example usage:
 ```bash

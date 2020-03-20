@@ -85,6 +85,8 @@ workflows:
   commit:
     jobs:
       - run-staging
+        requires:
+          - init
   hourly:
     triggers:
       - schedule:

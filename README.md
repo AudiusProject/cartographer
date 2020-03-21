@@ -41,8 +41,6 @@ npm run reset
 
 > In Cartographer's current form, it only crawls forward and doesn't re-index things it has already re-indexed. To reindex the entirety of audius, reset and regenerate the entire sitemap.
 
-> Unfortunately, Cartographer doesn't know good "stopping" criteria of whether or not a route is simply unavailable (unpublished playlist / hidden track) and whether that would mean to stop indexing. Cartographer accepts a maximum of 10 consecutive failed requests before it gives up on fetching more. This can be configured with the `--fails=N` flag in `npm run start`
-
 ## CI
 
 The sitemap generator runs in circleci every hour with --count=1000

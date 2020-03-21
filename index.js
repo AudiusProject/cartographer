@@ -93,9 +93,9 @@ const run = async () => {
 
     // Fetch tracks, collections, and users for processing
     const [fetchedTracks, fetchedCollections, fetchedUsers] = await Promise.all([
-      fetchTracks(latestTrack, argv.count, argv.fails),
-      fetchCollections(latestCollection, argv.count, argv.fails),
-      fetchUsers(latestUser, argv.count, argv.fails)
+      fetchTracks(latestTrack, argv.count),
+      fetchCollections(latestCollection, argv.count),
+      fetchUsers(latestUser, argv.count)
     ])
     const { items: tracks, latest: newLatestTrack } = fetchedTracks
     const { items: collections, latest: newLatestCollection } = fetchedCollections

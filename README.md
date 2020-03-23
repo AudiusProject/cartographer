@@ -39,6 +39,8 @@ npm run reset
 
 ### Notes
 
+> Cartographer also generates a sitemap (defaults.xml) which contains static routes for https://audius.co. New urls can be added in defaults.yml.
+
 > In Cartographer's current form, it only crawls forward and doesn't re-index things it has already re-indexed. To reindex the entirety of audius, reset and regenerate the entire sitemap.
 
 ## CI

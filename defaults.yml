@@ -1,0 +1,15 @@
+routes:
+ # Public site
+ - /
+ - /press
+ - /legal/privacy-policy
+ - /legal/terms-of-use
+
+ # App
+ - /feed
+ - /trending
+ - /explore
+ - /signup
+ - /signin
+
+

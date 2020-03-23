@@ -6,13 +6,15 @@ const {
   getLatestSiteMapNumber,
   createRootSiteIndex,
   createOrAppendSiteMap,
-  createOrAppendSiteIndex
+  createOrAppendSiteIndex,
+  createSiteDefaults
 } = require('./lib/sitemap')
 
 const argv = require('minimist')(process.argv.slice(2))
 console.log('Invoked with args: ', argv)
 
 const ROOT = './sitemaps'
+const DEFAULTS = './sitemaps/defaults.xml'
 const INDEX = './sitemaps/index.xml'
 const TRACKS_INDEX = './sitemaps/tracks/index.xml'
 const COLLECTIONS_INDEX = './sitemaps/collections/index.xml'
@@ -23,6 +25,7 @@ const COLLECTIONS_SITE_MAP_ROOT = './sitemaps/collections'
 const USERS_SITE_MAP_ROOT = './sitemaps/users'
 
 const LATEST = './sitemaps/latest.yml'
+const DEFAULTS_CONFIG = './defaults.yml'
 
 const makeDirs = () => {
   if (!fs.existsSync(ROOT)) {
@@ -84,6 +87,9 @@ const updateLatest = (latestTrack, latestCollection, latestUser) => {
 const run = async () => {
   try {
     makeDirs()
+
+    // Create defaults sitemap
+    createSiteDefaults(DEFAULTS, DEFAULTS_CONFIG)
 
     // Create a master site index if needed
     createRootSiteIndex(INDEX, TRACKS_INDEX, COLLECTIONS_INDEX, USERS_INDEX)

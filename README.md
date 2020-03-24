@@ -56,6 +56,7 @@ The sitemap generator outputs the following directory structure
 ```
 sitemaps
 │   index.xml
+|   defaults.xml // Static routes
 |
 └───tracks
 │   │   index.xml
@@ -74,7 +75,7 @@ sitemaps
 |   |   ...
 ```
 
-Depending on the crawler, the root index.xml file may not be able to be provided (as nested indexes aren't supported) and robots.txt files should list each index file for tracks, collections, and users.
+Depending on the crawler, the root index.xml file may not be able to be provided (as nested indexes aren't supported) and robots.txt files should list each index file for tracks, collections, and users as well as the defaults.xml file.
 
 ### Updating SEOs
 

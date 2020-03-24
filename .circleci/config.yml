@@ -106,7 +106,6 @@ workflows:
       - run-staging:
           requires:
             - init
-      # TODO: Re-enable this
-      # - run-production:
-      #   requires:
-      #     - init
+      - run-production:
+          requires:
+            - init

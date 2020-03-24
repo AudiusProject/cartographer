@@ -12,7 +12,7 @@
 
 The Cartographer sitemap generator is a node script that runs and is stateful on the presence of a local `/sitemaps` directory.
 
-Given the existence of sitemaps in the `/sitemaps` directory and the `/sitemaps` latest.yaml config, Cartographer will crawl an Audius discovery provider, indexing new entries into the `/sitemaps` folder, which can then be persisted and served.
+Given the existence of sitemaps in the `sitemaps/` directory and the `sitemaps/latest.yml` config, Cartographer will crawl an Audius discovery provider, indexing new entries into the `/sitemaps` folder, which can then be persisted and served.
 
 Example usage:
 ```bash
@@ -39,9 +39,9 @@ npm run reset
 
 ### Notes
 
-> In Cartographer's current form, it only crawls forward and doesn't re-index things it has already re-indexed. To reindex the entirety of audius, reset and regenerate the entire sitemap.
+> Cartographer also generates a sitemap (defaults.xml) which contains static routes for https://audius.co. New urls can be added in defaults.yml.
 
-> Unfortunately, Cartographer doesn't know good "stopping" criteria of whether or not a route is simply unavailable (unpublished playlist / hidden track) and whether that would mean to stop indexing. Cartographer accepts a maximum of 10 consecutive failed requests before it gives up on fetching more. This can be configured with the `--fails=N` flag in `npm run start`
+> In Cartographer's current form, it only crawls forward and doesn't re-index things it has already re-indexed. To reindex the entirety of audius, reset and regenerate the entire sitemap.
 
 ## CI
 

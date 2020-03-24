@@ -12,7 +12,8 @@
     "pull:staging": "aws s3 sync s3://staging.audius.co/sitemaps ./sitemaps --delete",
     "pull:production": "aws s3 sync s3://audius.co/sitemaps ./sitemaps --delete",
     "sync:staging": "aws s3 sync sitemaps s3://staging.audius.co/sitemaps --delete --cache-control max-age=0",
-    "sync:production": "aws s3 sync sitemaps s3://audius.co/sitemaps --delete --cache-control max-age=0"
+    "sync:production": "aws s3 sync sitemaps s3://audius.co/sitemaps --delete --cache-control max-age=0",
+    "update:google": "env-cmd -f .env node lib/google.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/AudiusProject/cartographer#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "googleapis": "^48.0.0",
     "js-yaml": "^3.13.1",
     "xmlbuilder2": "^1.7.0"
   },

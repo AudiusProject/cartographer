@@ -92,7 +92,7 @@ const run = async () => {
     createSiteDefaults(DEFAULTS, DEFAULTS_CONFIG)
 
     // Create a master site index if needed
-    createRootSiteIndex(INDEX, TRACKS_INDEX, COLLECTIONS_INDEX, USERS_INDEX)
+    createRootSiteIndex(INDEX, TRACKS_INDEX, COLLECTIONS_INDEX, USERS_INDEX, DEFAULTS)
 
     // Read from the latest.yml config to determine where to start indexing
     const { latestTrack, latestCollection, latestUser } = readLatest()

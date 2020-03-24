@@ -75,3 +75,22 @@ sitemaps
 ```
 
 Depending on the crawler, the root index.xml file may not be able to be provided (as nested indexes aren't supported) and robots.txt files should list each index file for tracks, collections, and users.
+
+### Updating SEOs
+
+You may want to try and force update google.
+
+```
+npm run update:google
+```
+
+which will run a script that sends API requires to google to recrawl sitemaps
+
+In order to run this, you need to make a service account [here](https://console.cloud.google.com/apis/credentials) and set two env vars:
+
+```
+
+GOOGLE_APPLICATION_CREDENTIALS=<path to credentials.json>
+GCLOUD_PROJECT=<the project you set up>
+
+(or DM ray)

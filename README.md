@@ -1,6 +1,4 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/2731362/77206274-caa93b00-6ab3-11ea-917f-1dd18da6a4b4.png" alt="stems" width="340">
-
   <p align="center">
     <a href="https://audius.co/sitemaps/index.xml">audius.co</a> sitemap generator
   </p>
@@ -94,4 +92,3 @@ In order to run this, you need to make a service account [here](https://console.
 GOOGLE_APPLICATION_CREDENTIALS=<path to credentials.json>
 GCLOUD_PROJECT=<the project you set up>
 
-(or DM ray)

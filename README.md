@@ -77,6 +77,8 @@ Depending on the crawler, the root index.xml file may not be able to be provided
 
 ### Updating SEOs
 
+Note: This feature is incomplete
+
 You may want to try and force update google.
 
 ```

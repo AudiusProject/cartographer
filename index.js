@@ -155,6 +155,7 @@ const run = async () => {
 
     // Update the latest.yml file that keeps track of what we've indexed
     updateLatest(newLatestTrack, newLatestCollection, newLatestUser)
+    process.exit()
   } catch (e) {
     console.error('Some error occured, output may be corrupted')
     console.error(e)

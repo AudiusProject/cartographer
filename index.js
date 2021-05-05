@@ -137,19 +137,16 @@ const run = async () => {
     await createOrAppendSiteIndex(
       TRACKS_INDEX,
       TRACKS_SITE_MAP_ROOT,
-      getLatestSiteMapNumber(latestTrack),
       latestTrackNumber
     )
     await createOrAppendSiteIndex(
       COLLECTIONS_INDEX,
       COLLECTIONS_SITE_MAP_ROOT,
-      getLatestSiteMapNumber(latestCollection),
       latestCollectionNumber
     )
     await createOrAppendSiteIndex(
       USERS_INDEX,
       USERS_SITE_MAP_ROOT,
-      getLatestSiteMapNumber(latestUser),
       latestUserNumber
     )
 

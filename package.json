@@ -27,7 +27,7 @@
   "homepage": "https://github.com/AudiusProject/cartographer#readme",
   "dependencies": {
     "@audius/libs": "1.1.24",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "googleapis": "^48.0.0",
     "js-yaml": "^3.13.1",
     "xmlbuilder2": "^1.7.0"

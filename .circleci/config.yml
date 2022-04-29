@@ -6,12 +6,12 @@ jobs:
   init:
     working_directory: ~/cartographer
     docker:
-      - image: circleci/node:10.13
+      - image: circleci/node:14.18
     steps:
       - checkout
       - run:
           name: update-npm
-          command: 'sudo npm install -g npm@latest'
+          command: "sudo npm install -g npm@latest"
 
       # Download and cache dependencies
       - restore_cache:
@@ -43,7 +43,7 @@ jobs:
     executor: aws-cli/default
     working_directory: ~/cartographer
     docker:
-      - image: circleci/node:10.13
+      - image: circleci/node:14.18
     steps:
       - checkout
       - attach_workspace:
@@ -64,7 +64,7 @@ jobs:
     executor: aws-cli/default
     working_directory: ~/cartographer
     docker:
-      - image: circleci/node:10.13
+      - image: circleci/node:14.18
     steps:
       - checkout
       - attach_workspace:
@@ -72,7 +72,7 @@ jobs:
       - aws-cli/setup
       - run:
           name: update-npm
-          command: 'sudo npm install -g npm@latest'
+          command: "sudo npm install -g npm@latest"
       - run: npm install
       - run:
           name: pull
